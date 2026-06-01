@@ -1,0 +1,55 @@
+# Python virtual environment
+
+.venv/
+
+# Python cache
+
+**pycache**/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables
+
+.env
+
+# Logs
+
+*.log
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# VS Code
+
+.vscode/
+
+# JetBrains
+
+.idea/
+
+# Node modules
+
+node_modules/
+
+# Build folders
+
+dist/
+build/
+
+# Coverage / testing
+
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Jupyter
+
+.ipynb_checkpoints/
+
+# macOS
+
+.AppleDouble
+.LSOverride
