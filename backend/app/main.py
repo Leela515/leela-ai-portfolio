@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 from backend.app.api.routes import router
+from backend.app.core.config import settings
 
 app = FastAPI(
-    title="Leela AI Portfolio",
-    description="AI powered portfolio platform",
-    version="1.0.0"
+    title=settings.PROJECT_NAME,
+    version=settings.version
 )
 
 app.include_router(router)
