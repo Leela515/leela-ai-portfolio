@@ -1,13 +1,8 @@
 from pathlib import Path
-from dataclasses import dataclass
-
-@dataclass
-class KnowledgeDocument:
-    source: str
-    content: str
+from backend.app.rag.models import KnowledgeDocument
 
 class KnowledgeLoader:
-    def __init__(self, knowledge_dir: str = "backend/app/knowledge/documents"):
+    def __init__(self, knowledge_dir: str | Path):
         self.knowledge_dir = Path(knowledge_dir)
 
     def load_markdown_files(self) -> list[KnowledgeDocument]:
@@ -16,7 +11,7 @@ class KnowledgeLoader:
         
         documents: list[KnowledgeDocument] = []
 
-        for file_path in self.knowledge_dir.rglob("*.md"):
+        for file_path in sorted(self.knowledge_dir.rglob("*.md")):
             content = file_path.read_text(encoding="utf-8").strip()
 
             if not content:
