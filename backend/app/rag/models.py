@@ -11,3 +11,8 @@ class DocumentChunk:
     section: str
     content: str
     chunk_id: str
+
+@dataclass(frozen=True)
+class RetrievedChunk:
+    chunk: DocumentChunk
+    score: float
