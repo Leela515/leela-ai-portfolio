@@ -54,6 +54,8 @@ The system replaced traditional continuous activations with spike-driven neuron 
 
 # Technology Stack
 
+This section describes the technologies, frameworks, libraries, tools, and models used in the Spiking Transformer Language Model project.
+
 ## Core Frameworks
 
 * Python

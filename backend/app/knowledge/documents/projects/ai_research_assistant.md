@@ -35,6 +35,8 @@ The system was intentionally built with modular engineering principles to suppor
 
 # Technology Stack
 
+This section describes the technologies, frameworks, libraries, tools, and models used in the AI Research Assistant project.
+
 ## Backend & APIs
 
 * Python

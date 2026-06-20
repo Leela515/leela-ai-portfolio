@@ -16,7 +16,10 @@ def build_retriever(
 
     embedding_model = EmbeddingModel()
     embeddings = embedding_model.embed_texts(
-        [chunk.content for chunk in chunks]
+        [
+            f"Section: {chunk.section}\n\nContent:\n{chunk.content}"
+            for chunk in chunks
+        ]
     )
 
     vector_store = VectorStore(dimension=384)

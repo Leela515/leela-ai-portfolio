@@ -63,6 +63,8 @@ to improve robustness under noisy underwater conditions.
 
 # Technology Stack
 
+This section describes the technologies, frameworks, libraries, tools, and models used in the underwater swimmer pose estimation project.
+
 ## Deep Learning & Computer Vision
 
 * PyTorch
