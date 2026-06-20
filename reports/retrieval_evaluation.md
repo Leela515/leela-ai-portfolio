@@ -1,6 +1,6 @@
 # Retrieval Evaluation Report
 
-Generated at: 2026-06-20T18:59:19
+Generated at: 2026-06-20T23:00:30
 
 
 ---
@@ -9,7 +9,7 @@ Generated at: 2026-06-20T18:59:19
 
 ### Result 1
 
-- Score: `0.7270`
+- Score: `6.8197`
 - Source: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md`
 - Section: `Technology Stack`
 - Chunk ID: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md::chunk-4`
@@ -50,56 +50,55 @@ This section describes the technologies, frameworks, libraries, tools, and model
 
 ### Result 2
 
-- Score: `0.7245`
+- Score: `5.6374`
 - Source: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md`
-- Section: `Technical Challenges`
-- Chunk ID: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md::chunk-11`
+- Section: `Model Improvements & Optimisations`
+- Chunk ID: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md::chunk-12`
 
 ```text
-One of the biggest challenges was handling underwater visual distortion while maintaining stable pose estimation.
+Several techniques were introduced to improve performance under underwater conditions:
 
-Major challenges included:
+* domain-specific fine-tuning,
+* bounding box expansion,
+* temporal smoothing,
+* data augmentation,
+* and custom skeleton design.
 
-* bubbles,
-* turbulence,
-* underwater lighting variation,
-* motion blur,
-* swimmer orientation changes,
-* partial occlusion,
-* and small-joint localisation difficulties.
+The project also used:
 
-Additional engineering challenges included:
-
-* stabilising temporal predictions,
-* reducing skeleton jitter,
-* handling incomplete swimmer visibility,
-* and improving robustness under noisy aquatic conditions.
+* diversified underwater samples,
+* custom annotations,
+* and sports-specific pose adaptation strategies.
 
 ---
 ```
 
 ### Result 3
 
-- Score: `0.7084`
+- Score: `1.3624`
 - Source: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md`
-- Section: `Evaluation & Analysis`
-- Chunk ID: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md::chunk-13`
+- Section: `What Makes This Different From Standard Computer Vision Projects`
+- Chunk ID: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md::chunk-14`
 
 ```text
+Unlike standard computer vision tutorial projects, this system addressed a real-world sports AI problem under difficult underwater conditions.
+
 The project involved:
 
-* detection evaluation,
-* pose estimation benchmarking,
-* PCK analysis,
-* error analysis,
-* and underwater domain adaptation evaluation.
+* a real client collaboration with Aquatics GB,
+* custom underwater datasets,
+* domain-specific skeleton design,
+* multi-model pipeline engineering,
+* temporal refinement,
+* and deployable inference workflows.
 
-The system was evaluated on:
+The project focused on:
 
-* localisation accuracy,
-* keypoint precision,
-* temporal consistency,
-* and robustness under underwater noise.
+* underwater biomechanics,
+* athlete performance analysis,
+* and practical coaching applications
+
+rather than generic human pose estimation benchmarks.
 
 ---
 ```
@@ -111,36 +110,46 @@ The system was evaluated on:
 
 ### Result 1
 
-- Score: `0.8519`
+- Score: `8.3470`
 - Source: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md`
-- Section: `Problem Statement`
-- Chunk ID: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md::chunk-2`
+- Section: `Pose Estimation Pipeline`
+- Chunk ID: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md::chunk-7`
 
 ```text
-Underwater pose estimation is significantly more difficult than standard human pose estimation because underwater environments introduce:
+## RTMPose
 
-* lighting distortion,
-* bubbles,
-* turbulence,
-* reflections,
-* motion blur,
-* swimmer occlusion,
-* and inconsistent visibility of body parts.
+RTMPose handled underwater swimmer pose estimation.
 
-Traditional pose estimation datasets and models are not designed for underwater sports environments where:
+The model predicted a custom unilateral underwater skeleton consisting of:
 
-* keypoints are frequently obscured,
-* swimmer orientation changes rapidly,
-* and water dynamics reduce feature clarity.
+* fingertip,
+* wrist,
+* elbow,
+* shoulder,
+* head,
+* pelvis,
+* hip,
+* knee,
+* ankle,
+* and toe keypoints.
 
-The project aimed to create a robust underwater pose estimation pipeline capable of operating reliably under these challenging real-world conditions.
+The project used a unilateral skeleton because:
+
+* dolphin kicks are largely symmetric,
+* one side is frequently occluded underwater,
+* and unilateral representation simplified training while improving robustness.
+
+### Pose Estimation Performance
+
+* coco/AP = 0.9979
+* AR = 0.9983
 
 ---
 ```
 
 ### Result 2
 
-- Score: `0.8352`
+- Score: `7.9234`
 - Source: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md`
 - Section: `Technology Stack`
 - Chunk ID: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md::chunk-4`
@@ -181,28 +190,36 @@ This section describes the technologies, frameworks, libraries, tools, and model
 
 ### Result 3
 
-- Score: `0.8326`
+- Score: `6.6609`
 - Source: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md`
-- Section: `Project Overview`
-- Chunk ID: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md::chunk-1`
+- Section: `Detection Pipeline`
+- Chunk ID: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md::chunk-6`
 
 ```text
-This project focused on building an AI-powered underwater swimmer pose estimation system for dolphin kick performance analysis in competitive swimming.
+## RTMDet
 
-Traditional swimming analysis relies heavily on:
+RTMDet handled swimmer detection and localisation.
 
-* manual video inspection,
-* subjective biomechanical interpretation,
-* and time-consuming frame-by-frame analysis performed by coaches.
+The model was responsible for:
 
-The goal of this project was to develop a computer vision pipeline capable of:
+* detecting swimmers in underwater frames,
+* generating bounding boxes,
+* isolating swimmer regions,
+* and reducing underwater background noise before pose estimation.
 
-* detecting swimmers underwater,
-* estimating body joint positions,
-* handling underwater visual distortion,
-* and generating structured kinematic outputs for athlete performance analysis.
+The model was:
 
-The project was developed in collaboration with Aquatics GB and focused specifically on analysing underwater dolphin/fly kick mechanics.
+* fine-tuned from COCO pretrained weights,
+* adapted for a single swimmer class,
+* and optimized for underwater environments.
+
+Bounding boxes were expanded by 20% to improve downstream pose estimation stability.
+
+### Detection Performance
+
+* mAP = 0.611
+* mAP@0.5 = 0.914
+* mAP@0.75 = 0.703
 
 ---
 ```
@@ -214,7 +231,7 @@ The project was developed in collaboration with Aquatics GB and focused specific
 
 ### Result 1
 
-- Score: `0.7306`
+- Score: `8.3109`
 - Source: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md`
 - Section: `Why A Two-Stage Pipeline Was Used`
 - Chunk ID: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md::chunk-10`
@@ -248,7 +265,7 @@ The design also aligned with production-style sports vision pipelines where dete
 
 ### Result 2
 
-- Score: `0.6811`
+- Score: `2.7437`
 - Source: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md`
 - Section: `System Design`
 - Chunk ID: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md::chunk-3`
@@ -273,7 +290,7 @@ to improve robustness under noisy underwater conditions.
 
 ### Result 3
 
-- Score: `0.6568`
+- Score: `-3.3565`
 - Source: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md`
 - Section: `Pipeline Architecture`
 - Chunk ID: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md::chunk-5`
@@ -314,7 +331,7 @@ The system generated:
 
 ### Result 1
 
-- Score: `0.8192`
+- Score: `7.6777`
 - Source: `backend\app\knowledge\documents\projects\ai_research_assistant.md`
 - Section: `Technology Stack`
 - Chunk ID: `backend\app\knowledge\documents\projects\ai_research_assistant.md::chunk-3`
@@ -351,7 +368,7 @@ This section describes the technologies, frameworks, libraries, tools, and model
 
 ### Result 2
 
-- Score: `0.7817`
+- Score: `4.3807`
 - Source: `backend\app\knowledge\documents\projects\ai_research_assistant.md`
 - Section: `Project Overview`
 - Chunk ID: `backend\app\knowledge\documents\projects\ai_research_assistant.md::chunk-1`
@@ -374,7 +391,7 @@ The project focused on reliable research assistance.
 
 ### Result 3
 
-- Score: `0.7224`
+- Score: `-1.1268`
 - Source: `backend\app\knowledge\documents\projects\ai_research_assistant.md`
 - Section: `System Design`
 - Chunk ID: `backend\app\knowledge\documents\projects\ai_research_assistant.md::chunk-2`
@@ -403,7 +420,7 @@ The system was intentionally built with modular engineering principles to suppor
 
 ### Result 1
 
-- Score: `0.7571`
+- Score: `1.9335`
 - Source: `backend\app\knowledge\documents\projects\spiking_language_model.md`
 - Section: `Research Objective`
 - Chunk ID: `backend\app\knowledge\documents\projects\spiking_language_model.md::chunk-2`
@@ -427,27 +444,30 @@ The project specifically investigated:
 
 ### Result 2
 
-- Score: `0.7534`
+- Score: `1.7554`
 - Source: `backend\app\knowledge\documents\projects\spiking_language_model.md`
-- Section: `Research Focus`
-- Chunk ID: `backend\app\knowledge\documents\projects\spiking_language_model.md::chunk-11`
+- Section: `Research Challenges`
+- Chunk ID: `backend\app\knowledge\documents\projects\spiking_language_model.md::chunk-8`
 
 ```text
-The project focused on:
+One of the biggest challenges was maintaining semantic quality after converting dense embeddings into spike-based representations.
 
-* neuromorphic AI,
-* efficient transformer architectures,
-* biologically inspired computation,
-* and spike-based language modeling.
+Additional challenges included:
 
-A secondary goal was exploring whether spiking neural computation could support NLP tasks while potentially reducing computational inefficiencies associated with dense transformers.
+* unstable gradient flow,
+* temporal credit assignment,
+* adapting transformer attention for spike computation,
+* preserving contextual relationships,
+* and preventing information loss during spike encoding.
+
+Training stability was significantly more difficult compared to standard transformer architectures.
 
 ---
 ```
 
 ### Result 3
 
-- Score: `0.7514`
+- Score: `0.6285`
 - Source: `backend\app\knowledge\documents\projects\spiking_language_model.md`
 - Section: `Evaluation & Comparison`
 - Chunk ID: `backend\app\knowledge\documents\projects\spiking_language_model.md::chunk-9`
@@ -472,7 +492,7 @@ The dense transformer also served as the teacher model within the knowledge dist
 
 ### Result 1
 
-- Score: `0.6028`
+- Score: `-6.1724`
 - Source: `backend\app\knowledge\documents\profile.md`
 - Section: `Document`
 - Chunk ID: `backend\app\knowledge\documents\profile.md::chunk-0`
@@ -508,44 +528,67 @@ This portfolio is being built as an AI-powered engineering platform.
 
 ### Result 2
 
-- Score: `0.5545`
+- Score: `-11.1691`
 - Source: `backend\app\knowledge\documents\projects\ai_research_assistant.md`
-- Section: `Engineering Focus`
-- Chunk ID: `backend\app\knowledge\documents\projects\ai_research_assistant.md::chunk-11`
+- Section: `Project Overview`
+- Chunk ID: `backend\app\knowledge\documents\projects\ai_research_assistant.md::chunk-1`
 
 ```text
-This project combined:
+The AI Research Assistant was designed to solve the problem of research-grounded question answering over academic papers.
 
-* RAG system design,
-* backend engineering,
-* retrieval optimization,
-* local LLM inference,
-* evaluation workflows,
-* and production-oriented AI engineering practices.
+Traditional chatbots can generate fluent responses but often hallucinate or produce unsupported claims. The goal of this project was to build a Retrieval-Augmented Generation (RAG) system capable of:
+
+* retrieving relevant academic papers,
+* parsing and indexing technical documents,
+* answering questions using retrieved evidence,
+* generating grounded citations,
+* and verifying answer faithfulness using a critic layer.
+
+The project focused on reliable research assistance.
+
+---
 ```
 
 ### Result 3
 
-- Score: `0.5401`
-- Source: `backend\app\knowledge\documents\projects\ai_research_assistant.md`
-- Section: `System Design`
-- Chunk ID: `backend\app\knowledge\documents\projects\ai_research_assistant.md::chunk-2`
+- Score: `-11.3728`
+- Source: `backend\app\knowledge\documents\projects\spiking_language_model.md`
+- Section: `Model Architecture`
+- Chunk ID: `backend\app\knowledge\documents\projects\spiking_language_model.md::chunk-5`
 
 ```text
-The project was designed as a production-style academic RAG assistant with local AI inference.
+## Multi-Step Spike Encoding
 
-The architecture combined:
+The project implemented multi-step spike encoding where dense token embeddings were converted into temporal spike sequences distributed across multiple timesteps.
 
-* backend APIs,
-* document parsing,
-* semantic retrieval,
-* vector search,
-* citation validation,
-* and answer verification workflows.
+Instead of representing tokens using a single dense vector, the model represented tokens as temporal spike trains to enable:
 
-The system was intentionally built with modular engineering principles to support scalability and future retrieval improvements.
+* temporal information propagation,
+* event-driven computation,
+* and spike-based semantic representation learning.
 
 ---
+
+## Spike-Based Transformer Blocks
+
+Transformer layers were modified to support:
+
+* spike-driven activations,
+* temporal neuron states,
+* and event-based computation.
+
+Traditional activations such as:
+
+* ReLU
+* GELU
+
+were replaced with spike-generating neuron dynamics.
+
+---
+
+## Temporal Processing
+
+Unlike traditional transformers that process tokens in a si
 ```
 
 
@@ -555,25 +598,27 @@ The system was intentionally built with modular engineering principles to suppor
 
 ### Result 1
 
-- Score: `0.6062`
-- Source: `backend\app\knowledge\documents\projects\ai_research_assistant.md`
+- Score: `-10.7104`
+- Source: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md`
 - Section: `Engineering Focus`
-- Chunk ID: `backend\app\knowledge\documents\projects\ai_research_assistant.md::chunk-11`
+- Chunk ID: `backend\app\knowledge\documents\projects\underwater_swimmer_pose_estimation.md::chunk-16`
 
 ```text
-This project combined:
+The project combined:
 
-* RAG system design,
-* backend engineering,
-* retrieval optimization,
-* local LLM inference,
-* evaluation workflows,
-* and production-oriented AI engineering practices.
+* computer vision,
+* sports biomechanics,
+* underwater AI systems,
+* pose estimation,
+* detection pipelines,
+* and applied machine learning engineering
+
+within a real-world sports analytics environment.
 ```
 
 ### Result 2
 
-- Score: `0.5732`
+- Score: `-10.7104`
 - Source: `backend\app\knowledge\documents\projects\spiking_language_model.md`
 - Section: `Engineering Focus`
 - Chunk ID: `backend\app\knowledge\documents\projects\spiking_language_model.md::chunk-13`
@@ -592,36 +637,18 @@ within a single NLP research system.
 
 ### Result 3
 
-- Score: `0.5673`
-- Source: `backend\app\knowledge\documents\profile.md`
-- Section: `Document`
-- Chunk ID: `backend\app\knowledge\documents\profile.md::chunk-0`
+- Score: `-10.7189`
+- Source: `backend\app\knowledge\documents\projects\ai_research_assistant.md`
+- Section: `Engineering Focus`
+- Chunk ID: `backend\app\knowledge\documents\projects\ai_research_assistant.md::chunk-11`
 
 ```text
-Profile
+This project combined:
 
-I am an Applied AI / ML Engineer focused on building production-oriented AI systems.
-
-Primary areas of interest include:
-
-Retrieval-Augmented Generation (RAG)
-Large Language Models (LLMs)
-MLOps
-Applied AI systems
-Computer Vision
-
-Particularly interested in combining:
-
-backend engineering,
-retrieval systems,
-machine learning pipelines,
-and deployable AI infrastructure.
-
-Target roles:
-
-AI Engineer
-ML Engineer
-GenAI Engineer
-
-This portfolio is being built as an AI-powered engineering platform.
+* RAG system design,
+* backend engineering,
+* retrieval optimization,
+* local LLM inference,
+* evaluation workflows,
+* and production-oriented AI engineering practices.
 ```

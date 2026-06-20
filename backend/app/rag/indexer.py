@@ -4,6 +4,8 @@ from backend.app.rag.embeddings import EmbeddingModel
 from backend.app.rag.loader import KnowledgeLoader
 from backend.app.rag.retriever import Retriever
 from backend.app.rag.vector_store import VectorStore
+from backend.app.rag.text_builder import RetrievalTextBuilder
+from backend.app.rag.reranker import CrossEncoderReranker
 
 def build_retriever(
         knowledge_dir: str | Path = "backend/app/knowledge/documents",
@@ -15,17 +17,16 @@ def build_retriever(
     chunks = chunker.chunk_documents(documents)
 
     embedding_model = EmbeddingModel()
-    embeddings = embedding_model.embed_texts(
-        [
-            f"Section: {chunk.section}\n\nContent:\n{chunk.content}"
-            for chunk in chunks
-        ]
-    )
+    text_builder = RetrievalTextBuilder()
+    retrieval_texts = text_builder.build_texts(chunks)
+
+    embeddings = embedding_model.embed_texts(retrieval_texts)
 
     vector_store = VectorStore(dimension=384)
     vector_store.add_chunks(chunks, embeddings)
 
     return Retriever(
-        embedding_model=embedding_model,
-        vector_store=vector_store
+    embedding_model=embedding_model,
+    vector_store=vector_store,
+    reranker=CrossEncoderReranker(),
     )
