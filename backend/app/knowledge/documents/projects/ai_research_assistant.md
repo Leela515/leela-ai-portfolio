@@ -1,3 +1,8 @@
+---
+document_type: project
+title: AI Research Assistant
+---
+
 # AI Research Assistant
 
 # Project Overview

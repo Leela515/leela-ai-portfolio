@@ -27,7 +27,9 @@ class MarkdownChunker:
                     source=document.source,
                     section=section_title,
                     content=section_content.strip(),
-                    chunk_id=f"{document.source}::chunk-{index}"
+                    chunk_id=f"{document.source}::chunk-{index}",
+                    document_type=document.document_type,
+                    title=document.title,
                 )
             )
         return chunks

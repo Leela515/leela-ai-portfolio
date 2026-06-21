@@ -1,8 +1,13 @@
-Profile
+---
+document_type: profile
+title: Leela Profile
+---
+
+# Profile
 
 I am an Applied AI / ML Engineer focused on building production-oriented AI systems.
 
-Primary areas of interest include:
+# Primary areas of interest include:
 
 Retrieval-Augmented Generation (RAG)
 Large Language Models (LLMs)
@@ -17,7 +22,7 @@ retrieval systems,
 machine learning pipelines,
 and deployable AI infrastructure.
 
-Target roles:
+# Target roles:
 
 AI Engineer
 ML Engineer

@@ -10,13 +10,17 @@ def test_vector_store_adds_and_searches_chunks():
             source="profile.md",
             section="Profile",
             content="Leela is an Applied AI/ML Engineer.",
-            chunk_id="profile-1"
+            chunk_id="profile-1",
+            document_type="project",
+            title="Test Project",
         ),
         DocumentChunk(
             source="project.md",
             section="RAG",
             content="the project uses retrieval augmented generation.",
-            chunk_id="project-1"
+            chunk_id="project-1",
+            document_type="project",
+            title="Test Project",
         ),
     ]
 
@@ -49,6 +53,8 @@ def test_vector_store_raises_error_for_mismatched_chunks_and_embeddings():
             section="Profile",
             content="Leela profile",
             chunk_id="profile-1",
+            document_type="project",
+            title="Test Project",
         )
     ]
 
@@ -70,6 +76,8 @@ def test_vector_store_raises_error_for_wrong_embedding_dimension():
             section="Profile",
             content="Leela profile",
             chunk_id="profile-1",
+            document_type="project",
+            title="Test Project",
         )
     ]
 

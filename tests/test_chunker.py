@@ -5,6 +5,8 @@ def test_chunk_document_splits_markdown_by_headings():
     document = KnowledgeDocument(
         source="profile.md",
         content="# Overview\nLeela is an Applied AI/ML Engineer.\n\n# Skills\nRAG, LLMs, MLOps",
+        document_type="profile",
+        title="Test Profile",
     )
 
     chunker = MarkdownChunker()
@@ -20,6 +22,8 @@ def test_chunk_document_handles_document_without_headings():
     document = KnowledgeDocument(
         source="plain.md",
         content="This document has no markdown headings.",
+        document_type="project",
+        title="Test Project",
     )
 
     chunker = MarkdownChunker()
@@ -34,10 +38,14 @@ def test_chunk_documents_chunks_multiple_documents():
         KnowledgeDocument(
             source="one.md",
             content="# First\nContent of the first document.",
+            document_type="project",
+            title="Test Project",
         ),
         KnowledgeDocument(
             source="two.md",
             content="# Second\nContent of the second document.",
+            document_type="project",
+            title="Test Project",
         )
     ]
 

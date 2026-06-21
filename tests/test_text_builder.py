@@ -8,6 +8,8 @@ def test_retrieval_text_builder_includes_section_and_content():
         section="Technology Stack",
         content="PyTorch, OpenCV, RTMDet, RTMPose",
         chunk_id="chunk-1",
+        document_type="project",
+        title="Test Project",
     )
 
     builder = RetrievalTextBuilder()

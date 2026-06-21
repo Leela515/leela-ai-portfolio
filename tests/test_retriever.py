@@ -18,12 +18,16 @@ def test_retriever_returns_relevant_chunks():
             section="Technology Stack",
             content="RTMDet and RTMPose were used.",
             chunk_id="underwater-1",
+            document_type="project",
+            title="Test Project",
         ),
         DocumentChunk(
             source="ai_research_assistant.md",
             section="Technology Stack",
             content="FAISS and sentence-transformers were used.",
             chunk_id="rag-1",
+            document_type="project",
+            title="Test Project",
         ),
     ]
 

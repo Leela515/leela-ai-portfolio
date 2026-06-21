@@ -1,3 +1,8 @@
+---
+document_type: project
+title: Spiking Transformer Language Model
+---
+
 # Spiking Transformer Language Model
 
 # Project Overview

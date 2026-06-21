@@ -1,3 +1,8 @@
+---
+document_type: project
+title: Underwater Swimmer Pose Estimation
+---
+
 # Underwater Swimmer Pose Estimation
 
 # Project Overview

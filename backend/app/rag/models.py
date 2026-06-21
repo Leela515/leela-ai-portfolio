@@ -4,6 +4,8 @@ from dataclasses import dataclass
 class KnowledgeDocument:
     source: str
     content: str
+    document_type: str
+    title: str
 
 @dataclass(frozen=True)
 class DocumentChunk:
@@ -11,6 +13,8 @@ class DocumentChunk:
     section: str
     content: str
     chunk_id: str
+    document_type: str
+    title: str
 
 @dataclass(frozen=True)
 class RetrievedChunk:
