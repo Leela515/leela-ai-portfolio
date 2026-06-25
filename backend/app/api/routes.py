@@ -1,10 +1,27 @@
-from fastapi import APIRouter
-from backend.app.services.assistant_service import AssistantService
+from fastapi import APIRouter, Depends, HTTPException, status
+
+from backend.app.llm.base import LLMGenerationError
+from backend.app.dependencies import get_portfolio_assitant_service
+from backend.app.services.portfolio_assistant_service import PortfolioAssistantService
 from backend.app.schemas.chat import ChatRequest, ChatResponse
 
 router = APIRouter()
-assistant_service = AssistantService()
+
 
 @router.post("/chat", response_model=ChatResponse)
-def chat(request: ChatRequest):
-    return assistant_service.answer_question(request)
+def chat(
+    request: ChatRequest,
+    service: PortfolioAssistantService = Depends(get_portfolio_assitant_service),
+):
+    try:
+        return service.answer_question(request.question)
+    except LLMGenerationError as error:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="LLM service unavailable."
+        ) from error
+    except ValueError as error:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(error),
+        ) from error

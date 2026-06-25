@@ -17,7 +17,7 @@ class OllmaClient(BaseLLM):
             raise ValueError("Prompt cannot be empty")
         
         try:
-            response = requests.posts(
+            response = requests.post(
                 f"{self.base_url}/api/generate",
                 json={
                     "model": self.model,
