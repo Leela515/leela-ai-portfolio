@@ -6,7 +6,7 @@ from backend.app.rag.prompt_builder import PromptBuilder
 
 class FakeLLM(BaseLLM):
     def generate(self, prompt: str) -> str:
-        return "Leela used PyTorch and RTMPose for the underwater pose estimation project. [Source 1]"
+        return '{"answer": "Leela used PyTorch and RTMPose. [Source 1]", "used_sources": ["Source 1"]}'
 
 
 def test_answer_generator_returns_answer_and_sources():

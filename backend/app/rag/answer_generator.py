@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from backend.app.llm.base import BaseLLM
 from backend.app.rag.models import RetrievedChunk
 from backend.app.rag.prompt_builder import PromptBuilder
+from backend.app.rag.answer_parser import AnswerParser
 
 @dataclass(frozen=True)
 class SourceReference:
@@ -22,9 +23,11 @@ class AnswerGenerator:
         self,
         llm: BaseLLM,
         prompt_builder: PromptBuilder,
+        answer_parser: AnswerParser | None = None,
     ):
         self.llm = llm
         self.prompt_builder = prompt_builder
+        self.answer_parser = answer_parser or AnswerParser()
 
     def generate(
         self,
@@ -36,12 +39,13 @@ class AnswerGenerator:
             retrieved_chunks=retrieved_chunks,
         )
 
-        answer = self.llm.generate(prompt)
+        raw_output = self.llm.generate(prompt)
+        parsed_answer = self.answer_parser.parse(raw_output)
 
         sources = self._build_sources(retrieved_chunks)
 
         return GeneratedAnswer(
-            answer=answer,
+            answer=parsed_answer.answer,
             sources=sources,
         )
     
