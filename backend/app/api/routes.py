@@ -4,7 +4,7 @@ from backend.app.llm.base import LLMGenerationError
 from backend.app.dependencies import get_portfolio_assitant_service
 from backend.app.services.portfolio_assistant_service import PortfolioAssistantService
 from backend.app.schemas.chat import ChatRequest, ChatResponse
-
+from backend.app.rag.answer_parser import AnswerParsingError
 router = APIRouter()
 
 
@@ -19,6 +19,11 @@ def chat(
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail="LLM service unavailable."
+        ) from error
+    except AnswerParsingError as error:
+        raise HTTPException(
+            status_code=status.HTTPS_502_BAG_GATEWAY,
+            detail="LLM returned an invalid structured response.",
         ) from error
     except ValueError as error:
         raise HTTPException(

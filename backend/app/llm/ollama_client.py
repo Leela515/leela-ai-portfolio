@@ -23,6 +23,7 @@ class OllmaClient(BaseLLM):
                     "model": self.model,
                     "prompt": prompt,
                     "stream": False,
+                    "format": "json",
                 },
                 timeout=self.timeout,
             )

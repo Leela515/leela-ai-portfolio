@@ -40,6 +40,7 @@ class AnswerGenerator:
         )
 
         raw_output = self.llm.generate(prompt)
+        
         parsed_answer = self.answer_parser.parse(raw_output)
 
         sources = self._build_sources(retrieved_chunks)

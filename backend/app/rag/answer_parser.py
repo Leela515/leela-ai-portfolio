@@ -21,6 +21,10 @@ class AnswerParser:
 
         if not isinstance(answer, str) or not answer.strip():
             raise AnswerParsingError("Parsed answer is missing or empty.")
+        
+        answer = answer.strip()
+        answer = answer.replace("\\n", "\n")
+        answer = answer.replace("&#x20;", " ")
 
         if not isinstance(used_sources, list) or not all(
             isinstance(source, str) for source in used_sources
@@ -28,6 +32,6 @@ class AnswerParser:
             raise AnswerParsingError("used_sources must be a list of strings.")
 
         return ParsedAnswer(
-            answer=answer.strip(),
+            answer=answer.replace("\\n", "\n").strip(),
             used_sources=used_sources,
         )

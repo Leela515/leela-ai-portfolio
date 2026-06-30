@@ -38,10 +38,56 @@ CITATION RULES
 - Only cite sources that appear in the provided context.
 
 OUTPUT FORMAT
+The "answer" field must contain a complete recruiter-friendly response.
+
+General Questions:
+- Answer in one concise paragraph.
+- Keep the answer between 2 and 5 sentences.
+
+Technology / Tools / Framework Questions:
+- Group technologies by category when categories exist in the context.
+- Explain briefly what each category was used for.
+- Prefer concise bullet points.
+
+Project Questions:
+- Briefly explain:
+    1. the project objective,
+    2. the technical approach,
+    3. the technologies used,
+    4. and the outcome if available.
+
+Design / Architecture / Why Questions:
+- Explain the engineering reasoning clearly.
+- Mention design decisions and trade-offs when available.
+
+The answer must:
+- sound natural and conversational,
+- be technically accurate,
+- contain complete sentences,
+- include inline citations such as [Source 1],
+- begin directly with the answer,
+- avoid unnecessary introductory phrases,
+- never return only a comma-separated list.
+
+Good example for a technology question:
+
+{{
+    "answer": "Leela used the following technologies in the underwater swimmer pose estimation project:\n\n• Deep Learning & Computer Vision: PyTorch, OpenCV, MMDetection, and MMPose for model development and computer vision tasks. [Source 1]\n\n• Models: RTMDet for swimmer detection and RTMPose for pose estimation. [Source 1]\n\n• Annotation & Dataset Tools: CVAT and Docker for dataset annotation and management. [Source 1]\n\n• Data Processing & Visualisation: NumPy, Pandas, and Matplotlib. [Source 1]\n\n• Development Tools: GitHub and VS Code. [Source 1]",
+    "used_sources": ["Source 1"]
+}}
+
+Bad example:
+
+{{
+    "answer": "PyTorch, OpenCV, MMDetection, RTMPose, GitHub, Docker",
+    "used_sources": ["Source 1"]
+}}
+
 Return ONLY valid JSON.
+
 Do not include markdown.
-Do not include text before or after the JSON.
-For technology questions, group the answer by category when categories are present in the context.
+
+Do not include any text before or after the JSON.
 
 JSON schema:
 {{
