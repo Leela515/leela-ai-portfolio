@@ -3,12 +3,15 @@ function Navbar() {
         <nav className="navbar">
             <h2>Leela R</h2>
 
-            <u1>
-                <li>About</li>
-                <li>Projects</li>
-                <li>Experience</li>
-                <li>Skills</li>
-            </u1>
+            <div className="nav-links">
+                <a href="#about">About</a>
+                <span>|</span>
+                <a href="#projects">Projects</a>
+                <span>|</span>
+                <a href="#experience">Experience</a>
+                <span>|</span>
+                <a href="#skills">Skills</a>
+            </div>
         </nav>
     );
 }
