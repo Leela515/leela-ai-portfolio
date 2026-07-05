@@ -53,3 +53,10 @@ htmlcov/
 
 .AppleDouble
 .LSOverride
+
+node_modules
+dist
+.env
+.env.local
+.vite
+.DS_Store
