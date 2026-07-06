@@ -1,6 +1,6 @@
 function Projects() {
     return (
-        <section className="section">
+        <section id="projects"className="section">
             <h2>Projects</h2>
 
             <h3>Natural Language Processing</h3>
