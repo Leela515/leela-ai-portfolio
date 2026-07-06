@@ -8,6 +8,11 @@ import Experience from "./components/Experience";
 import Skills from "./components/Skills";
 import AvatarAssistant from "./components/AvatarAssistant";
 
+import "./styles/background.css";
+import "./styles/glass.css";
+import "./styles/animation.css";
+
+
 function App() {
   const [ showNavbar, setShowNavbar ] = useState(false);
 
@@ -24,19 +29,27 @@ function App() {
   }, []);
 
   return (
-    <div className="app">
-      {showNavbar && <Navbar />}
+    <>
+      {/* Animated background */}
+      <div className="background">
+        <div className="blob blob1"></div>
+        <div className="blob blob2"></div>
+        <div className="blob blob3"></div>
+      </div>
+      <div className="app">
+        {showNavbar && <Navbar />}
 
-      <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Experience />
-        <Skills />
-      </main>
+        <main>
+          <Hero />
+          <About />
+          <Projects />
+          <Experience />
+          <Skills />
+        </main>
 
-      <AvatarAssistant />
-    </div>
+        <AvatarAssistant />
+      </div>
+    </>
   );
 }
 

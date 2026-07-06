@@ -18,7 +18,7 @@ function Hero() {
             </div>
 
             <div className="hero-visual">
-                <div className="glow-card">
+                <div className="glow-card glass">
                     <p className="card-label">Leela AI</p>
                     <h3>Ask my portfolio anything.</h3>
                     <span>
