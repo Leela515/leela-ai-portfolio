@@ -167,28 +167,234 @@ button:hover {
   backdrop-filter: blur(10px);
 }
 
-.avatar-button {
+.assistant-wrapper {
   position: fixed;
+  right: 38px;
+  bottom: 38px;
+  z-index: 2000;
+}
 
-  right: 40px;
-  bottom: 40px;
+.assistant-preview {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+}
 
-  width: 80px;
-  height: 80px;
+.assistant-bubble {
+  padding: 14px 18px;
+  border-radius: 18px 18px 4px 18px;
+
+  background: rgba(20, 24, 38, 0.9);
+  border: 1px solid rgba(249, 168, 212, 0.25);
+
+  color: white;
+  font-size: 0.95rem;
+  line-height: 1.4;
+
+  box-shadow: 
+    0 16px 45px rgba(0, 0, 0, 0.35),
+    0 0 35px rgba(244, 114, 182, 0.18);
+}
+
+.assistant-avatar {
+  position: relative;
+
+  width: 86px;
+  height: 86px;
 
   border-radius: 50%;
+  border: 3px solid #f9a8d4;
 
-  background: white;
-
-  color: black;
+  background:
+    radial-gradient(circle at 35% 25%, #ffffff, #f9a8d4 45%, #831843);
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  font-size: 2rem;
+  font-size: 2.3rem;
 
   cursor: pointer;
 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow:
+    0 0 35px rgba(244, 114, 182, 0.45),
+    0 0 70px rgba(37, 99, 235, 0.22);
+  
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.assistant-avatar:hover {
+  transform: translateY(-6px) scale(1.04);
+
+  box-shadow:
+    0 0 45px rgba(244, 114, 182, 0.75),
+    0 0 90px rgba(37, 99, 235, 0.32);
+}
+
+.online-dot {
+  position: absolute;
+  right: 6px;
+  bottom: 8px;
+
+  width: 17px;
+  height: 17px;
+
+  border-radius: 50%;
+  background: #34d399;
+  border: 3px solid #0b1020;
+
+  box-shadow: 0 0 16px #34d399;
+}
+
+.assistant-chat {
+  width: 380px;
+  height: 520px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  animation: assistantPop 0.25s ease;
+}
+
+.assistant-chat-header {
+  padding: 22px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.assistant-chat-header h3 {
+  font-size: 1.3rem;
+}
+
+.assistant-chat-header p {
+  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.85rem;
+}
+
+.small-online-dot {
+  display: inline-block;
+
+  width: 8px;
+  height: 8px;
+
+  margin-right: 7px;
+
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 10px #34d399;
+}
+
+.assistant-close {
+  width: 34px;
+  height: 34px;
+
+  padding: 0;
+  
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+
+  font-size: 1.4rem;
+}
+
+.assistant-chat-body {
+  flex: 1;
+  
+  padding: 22px;
+
+  overflow-y: auto;
+}
+
+.assistant-message {
+  padding: 16px;
+
+  border-radius: 18px 18px 18px 4px;
+
+  background: rgba(249, 168, 212, 0.14);
+  border: 1px solid rgba(249, 168, 212, 0.24);
+
+  line-height: 1.6;
+}
+
+.assistant-suggestions {
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.assistant-suggestions button {
+  text-align: left;
+
+  padding: 12px 14px;
+
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.07);
+  color: white;
+
+  border: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.assistant-input {
+  padding: 16px;
+
+  display: flex;
+  gap: 10px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.assistant-input input {
+  flex: 1;
+
+  padding: 13px 15px;
+
+  border-radius: 999px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  background: rgba(255, 255, 255, 0.08);
+
+  color: white;
+  outline: none;
+}
+
+.assistant-input input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.assistant-input button {
+  width: 45px;
+  height: 45px;
+
+  padding: 0;
+
+  border-radius: 50%;
+
+  background: #f472b6;
+  color: #1f1028;
+
+  font-weight: 900;
+}
+
+@keyframes assistantPop {
+  from {
+    opacity: 0;
+    transform: translate(18px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0) scale(1);
+  }
 }
