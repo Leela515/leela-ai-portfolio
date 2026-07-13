@@ -7,7 +7,9 @@ function Hero() {
                     Leela <span>R</span>
                 </h1>
 
-                <h2>AI Engineer</h2>
+                <h2>AI Engineer
+                    <span className="gradient-text"></span>
+                </h2>
                 <div className="hero-tags">
                     <span>NLP</span>
                     <span>Computer Vision</span>
