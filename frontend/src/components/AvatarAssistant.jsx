@@ -1,4 +1,5 @@
 import { useState } from "react";
+import avatarImage from "../assets/leela-ai.png"
 
 function AvatarAssistant() {
     const [isOpen, setIsOpen] = useState(false);
@@ -7,8 +8,8 @@ function AvatarAssistant() {
         {!isOpen && (
             <div className="assistant-preview">
                 <div className="assistant-bubble">
-                    Hi 👋 <br />
-                    Ask Leela AI
+                    Hi, I'm Leela AI 👋 <br />
+                    Ask me about Leela
                 </div>
 
                 <button
@@ -16,7 +17,12 @@ function AvatarAssistant() {
                     onClick={() => setIsOpen(true)}
                     aria-label="Open Leela AI assistant"
                 >
-                    👩🏻‍💻
+                    <img
+                        src={avatarImage}
+                        alt="Leela AI assistant"
+                        className="assistant-avatar-image"
+                        />
+                        
                     <span className="online-dot"></span> 
                 </button>
             </div>
