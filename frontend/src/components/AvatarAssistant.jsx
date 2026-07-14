@@ -182,11 +182,13 @@ function AvatarAssistant() {
                                     <p>Sources</p>
 
                                     {sources.map((source, index) => (
-                                        <span key={source.source || index}>
-                                            {source.title ||
-                                                source.source ||
-                                                'Source ${index + 1}'}
-                                        </span>
+                                        <div
+                                        className="source-card"
+                                        key={source.chunk_id || source.source || index}
+                                        >
+                                            <strong>{source.title || `Source ${index + 1 }`}</strong>
+                                            <span>{source.section || source.document_type}</span>
+                                        </div>
                                     ))}
                                 </div>
                             )}
