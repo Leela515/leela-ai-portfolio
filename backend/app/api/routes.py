@@ -22,7 +22,7 @@ def chat(
         ) from error
     except AnswerParsingError as error:
         raise HTTPException(
-            status_code=status.HTTPS_502_BAG_GATEWAY,
+            status_code=status.HTTP_502_BAD_GATEWAY,
             detail="LLM returned an invalid structured response.",
         ) from error
     except ValueError as error:
